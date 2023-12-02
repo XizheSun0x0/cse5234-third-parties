@@ -211,4 +211,10 @@ ENV/
 # mkdocs documentation
 /site
 
+# Ignore all zip files
+*.zip
+
+# Ignore directories named 'dependencies'
+dependencies/
+
 # End of https://www.gitignore.io/api/macos,linux,django,python,pycharm
