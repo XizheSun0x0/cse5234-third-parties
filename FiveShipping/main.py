@@ -1,9 +1,11 @@
 from fastapi import FastAPI, HTTPException
 from models import ShipmentInfo, ShipmentMessage
-import uvicorn
+from fastapi import FastAPI, HTTPException, status
+from mangum import Mangum
 import uuid
 
 app = FastAPI()
+handler = Mangum(app)
 
 @app.get("/")
 def read_root():
@@ -18,6 +20,3 @@ async def create_shipping(shipment_info: ShipmentInfo):
     # Logic to process shipping
     label_number = f"5PS-{uuid.uuid4()}"
     return {"label_number": label_number}
-
-if __name__ == "__main__":
-    uvicorn.run(app,host='127.0.0.1',port=5002)
